@@ -7,10 +7,11 @@ use utf8;
 
 BEGIN {
 	$RDF::TrineX::Functions::AUTHORITY = 'cpan:TOBYINK';
-	$RDF::TrineX::Functions::VERSION   = '0.002';
+	$RDF::TrineX::Functions::VERSION   = '0.003';
 }
 
 use Carp qw< croak >;
+use IO::Detect 0.003 qw< is_filehandle is_filename is_fileuri >;
 use RDF::NS::Trine;
 use RDF::Trine qw< store >;
 use RDF::Trine::Namespace qw< rdf rdfs owl xsd >;
@@ -154,16 +155,13 @@ sub parse
 	my ($thing, %opts) = @_;
 	
 	my $model  = delete($opts{into}) // delete($opts{model});
-	my $base   = delete $opts{base};
+	my $base   = delete($opts{base});
 	my $parser = delete($opts{parser}) // delete($opts{type})  // delete($opts{as}) // delete($opts{using});
 	
 	if (blessed($thing) && $thing->isa('RDF::Trine::Store')
 	or  blessed($thing) && $thing->isa('RDF::Trine::Model'))
 	{
-		if (!$model)
-		{
-			return model($thing);
-		}
+		return model($thing) unless $model;
 		
 		$thing->as_stream->each(sub {
 			$model->add_statement($_[0]);
@@ -174,48 +172,71 @@ sub parse
 	$model //= model();
 	return $model unless defined $thing;
 	
-	if (blessed($thing) && $thing->isa('URI')
-	or  blessed($thing) && $thing->isa('RDF::Trine::Node::Resource') && ($thing = $thing->uri)
-	or !blessed($thing) && $thing =~ m{^(https?|ftp|file):\S+$})
-	{
-		RDF::Trine::Parser->parse_url_into_model("$thing", $model);
-		return $model;
-	}
-	
+	# Normalise $parser. It should be a class name or blessed object.
+	# If undef, then 'RDF::Trine::Parser' class.
+	# If media type then, figure out correct parser.
+	# If format name then, figure out correct parser.
+	#
 	if (not $parser)
-	{
-		$parser = 'RDF::Trine::Parser';
-	}
+		{ $parser = 'RDF::Trine::Parser' }
 	elsif (not blessed $parser and $parser =~ m{/} and $parser !~ m{^RDF/}i)
-	{
-		$parser = RDF::Trine::Parser->parser_by_media_type($parser)->new;
-	}
+		{ $parser = RDF::Trine::Parser->parser_by_media_type($parser)->new }
 	elsif (not blessed $parser)
-	{
-		$parser = RDF::Trine::Parser->new($parser);
-	}
-	
+		{ $parser = RDF::Trine::Parser->new($parser) }	
+
+	# Normalise $base. Accept RDF::Trine::Nodes.
+	#
 	if (blessed $base and $base->isa('RDF::Trine::Node::Resource'))
 	{
 		$base = $base->uri;
+	}	
+
+	# Deal with $thing being a URI.
+	# "file://" is explicitly not handled here.
+	#
+	if (blessed($thing) && $thing->isa('URI')
+	or  blessed($thing) && $thing->isa('RDF::Trine::Node::Resource') && ($thing = $thing->uri)
+	or !blessed($thing) && $thing =~ m{^(https?|ftp|file|data):\S+$})
+	{
+		if (is_fileuri $thing)
+		{
+			# Convert to a local path, and allow to fall through...
+			URI->new("$thing")->file;
+		}
+		elsif (not ref $parser and $parser eq 'RDF::Trine::Parser')
+		{
+			RDF::Trine::Parser->parse_url_into_model("$thing", $model);
+			return $model;
+		}
+		else
+		{
+			# UA string consistent with RDF::Trine::Parser
+			my $ua   = LWP::UserAgent->new(agent => "RDF::Trine/$RDF::Trine::VERSION");
+			my $resp = $ua->get("$thing");
+			$parser->parse_into_model(("$base"//"$thing"), $resp->decoded_content, $model);
+			return $model;
+		}
 	}
 	
-	if (blessed($thing) && $thing->isa('Path::Class::File')
-	or !blessed($thing) && -f $thing
-	or  ref($thing) =~ /^IO/)
+	# Deal with $thing being a filename.
+	#
+	if (is_filename $thing)
 	{
-		unless ($base)
-		{
-			croak "No base URI provided for parsing"
-				if (ref $thing =~ /^IO/ and not blessed($thing) && $thing->isa('IO::All'));
-			$base //= URI::file->new_abs("$thing");
-		}
-		
-		$parser->parse_file_into_model("$base", $thing, $model);
+		$base //= URI::file->new_abs("$thing");
+		$parser->parse_file_into_model("$base", "$thing", $model);
 		return $model;
 	}
 	
 	croak "No base URI provided" unless $base;
+	
+	# Deal with $thing being a filehandle (or something similar).
+	#
+	if (is_filehandle $thing)
+	{
+		$parser->parse_file_into_model("$base", $thing, $model);
+		return $model;
+	}
+	
 	croak "No parser provided for parsing" unless blessed $parser;
 	$parser->parse_into_model("$base", $thing, $model);
 	
@@ -359,7 +380,7 @@ will be retrieved and parsed.
 
 A filehandle, L<Path::Class::File>, L<IO::All>, L<IO::Handle> object,
 or the name of an existing file (i.e. a scalar string). The file will
-be read an parsed.
+be read and parsed.
 
 Except in the case of L<Path::Class::File>, L<IO::All> and strings,
 you need to tell the C<parse> function what parser to use, and what

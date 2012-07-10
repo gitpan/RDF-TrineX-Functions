@@ -14,12 +14,12 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 19a860bc308dfb031c30b61b615e16c858281205 Changes
+SHA1 78a987656a8c14ea5feddbbd09acddb4a2f7b6c4 Changes
 SHA1 cc087c3dd6e1b519c680e68cd0231735a68300a0 LICENSE
-SHA1 432c56117f576a6c8e0449bca5a81f7f6014a091 MANIFEST
-SHA1 fe0c8433be195f498a363f08667e5b89c5100bb0 META.yml
+SHA1 559fc4d5a880d06e1c6ca65904bc6440e56d5d1e MANIFEST
+SHA1 af009f9133c7c774267a336b4bbb07e84a1e4d06 META.yml
 SHA1 7150e5e086ef493e1e527a1eeec44a8344b80db6 Makefile.PL
-SHA1 376dbd3d2b369e5bf6938e828cd9f48a0e60f57a README
+SHA1 0fbae3bc2488b661bc13677922e58e07de208ea1 README
 SHA1 06c410f05488c1612ed66b06d3a86b2580581e4a inc/Module/AutoInstall.pm
 SHA1 8a924add836b60fb23b25c8506d45945e02f42f4 inc/Module/Install.pm
 SHA1 61ab1dd37e33ddbe155907ce51df8a3e56ac8bbf inc/Module/Install/AutoInstall.pm
@@ -31,26 +31,27 @@ SHA1 66d3d335a03492583a3be121a7d888f63f08412c inc/Module/Install/Include.pm
 SHA1 b62ca5e2d58fa66766ccf4d64574f9e1a2250b34 inc/Module/Install/Makefile.pm
 SHA1 1aa925be410bb3bfcd84a16985921f66073cc1d2 inc/Module/Install/Metadata.pm
 SHA1 3b9281ddf7dd6d6f5de0a9642c69333023193c80 inc/Module/Install/Package.pm
-SHA1 b86d0385e10881db680d28bde94f275e49e34a27 inc/Module/Install/TrustMetaYml.pm
+SHA1 9de7b5129351499c048328dfa718d0eab557cf30 inc/Module/Install/TrustMetaYml.pm
 SHA1 e4196994fa75e98bdfa2be0bdeeffef66de88171 inc/Module/Install/Win32.pm
 SHA1 c3a6d0d5b84feb3280622e9599e86247d58b0d18 inc/Module/Install/WriteAll.pm
 SHA1 26d58a041cd6b3d21db98b32e8fd1841aae21204 inc/Module/Package.pm
-SHA1 6b807287940754cc31a3db59f2b22e363d5525be inc/Module/Package/Dist/RDF.pm
-SHA1 e31c281782183601e1e057c5914f63269e043932 inc/Scalar/Util.pm
-SHA1 5eae2f71c45a996a296d2445b18d0589307111f0 inc/Scalar/Util/PP.pm
+SHA1 8d909d81d2f98514d42f67a972a489ff624a4183 inc/Module/Package/Dist/RDF.pm
+SHA1 0e0eed2e69d9583081868cf4f220068d0a018568 inc/Scalar/Util.pm
 SHA1 feb933cefe2e3762e8322bd6071a2499f3440da1 inc/YAML/Tiny.pm
 SHA1 8105c0510a773b56840995fb4dd2dc64fe9ddaee inc/unicore/Name.pm
-SHA1 17c024f1a261fb0070e2c501fb395c9993a0452f lib/RDF/TrineX/Functions.pm
-SHA1 df586f2b2280bd7ac7df2ce5dcecef25b61ccc96 meta/changes.ttl
-SHA1 7e1a54c21d18da98ad100fc4154ea7bfdb76d88b meta/doap.ttl
-SHA1 2b78b71d6fa9ffd3e1cf2d1d06ba7f9a9b767ddd meta/makefile.ttl
+SHA1 36df501c7c9b73c282c5174ed54d8283b2f2cbf2 inc/utf8.pm
+SHA1 585b4f27aee78f59fc7d6a4d290360cabc33c962 lib/RDF/TrineX/Functions.pm
+SHA1 965dc52337de0035516a28689f10d46425ea0ac3 meta/changes.pret
+SHA1 6ecca8c87fd85e680c966ae75b2a00eb8c8a70c0 meta/doap.pret
+SHA1 0216dcdad209c2a8f5ed07dc4b3631d5237654de meta/makefile.pret
 SHA1 8127cf7daa22379259990668637b98ac7d00a626 t/01basic.t
-SHA1 2a369399ccea547b40c4b79a48b37301088133aa t/02parse_and_serialise.t
+SHA1 d9abd9b565eb2dbadf213c3ddd936ca18b19b86b t/02parse_and_serialise.nt
+SHA1 27bca96f6b8997f45fc6356e1389fca4d6b032c0 t/02parse_and_serialise.t
 SHA1 e3d095e0c94db1fea131db909a3baec9d088f0a5 t/03nodes.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.10 (GNU/Linux)
 
-iEYEARECAAYFAk/Gj+YACgkQzr+BKGoqfTmQJwCbBaNkQxOEBhDZmc1mdT/eYH0w
-MuEAnR+s23QShpg2sv57aGTbBnmztqhh
-=H+iV
+iEYEARECAAYFAk/8AtQACgkQzr+BKGoqfTkwLwCfUp8sIWLJ29zVcyxna9w1vP98
+AlsAn1UmmJfDwV1fDJgfHkyIat853DN2
+=Q1wS
 -----END PGP SIGNATURE-----

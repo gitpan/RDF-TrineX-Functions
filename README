@@ -74,7 +74,7 @@ DESCRIPTION
 
             A filehandle, Path::Class::File, IO::All, IO::Handle object, or
             the name of an existing file (i.e. a scalar string). The file
-            will be read an parsed.
+            will be read and parsed.
 
             Except in the case of Path::Class::File, IO::All and strings,
             you need to tell the "parse" function what parser to use, and
