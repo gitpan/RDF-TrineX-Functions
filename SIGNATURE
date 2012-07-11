@@ -14,12 +14,12 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 78a987656a8c14ea5feddbbd09acddb4a2f7b6c4 Changes
+SHA1 163934dcc09bcc0bed3efb312479e28c44b4dfd0 Changes
 SHA1 cc087c3dd6e1b519c680e68cd0231735a68300a0 LICENSE
 SHA1 559fc4d5a880d06e1c6ca65904bc6440e56d5d1e MANIFEST
-SHA1 af009f9133c7c774267a336b4bbb07e84a1e4d06 META.yml
+SHA1 4f352268efc67b95bc9016096042107d0b74292d META.yml
 SHA1 7150e5e086ef493e1e527a1eeec44a8344b80db6 Makefile.PL
-SHA1 0fbae3bc2488b661bc13677922e58e07de208ea1 README
+SHA1 d9ad2fec202ad4bdd9a476e8ebfe78cdcb148556 README
 SHA1 06c410f05488c1612ed66b06d3a86b2580581e4a inc/Module/AutoInstall.pm
 SHA1 8a924add836b60fb23b25c8506d45945e02f42f4 inc/Module/Install.pm
 SHA1 61ab1dd37e33ddbe155907ce51df8a3e56ac8bbf inc/Module/Install/AutoInstall.pm
@@ -40,18 +40,18 @@ SHA1 0e0eed2e69d9583081868cf4f220068d0a018568 inc/Scalar/Util.pm
 SHA1 feb933cefe2e3762e8322bd6071a2499f3440da1 inc/YAML/Tiny.pm
 SHA1 8105c0510a773b56840995fb4dd2dc64fe9ddaee inc/unicore/Name.pm
 SHA1 36df501c7c9b73c282c5174ed54d8283b2f2cbf2 inc/utf8.pm
-SHA1 585b4f27aee78f59fc7d6a4d290360cabc33c962 lib/RDF/TrineX/Functions.pm
-SHA1 965dc52337de0035516a28689f10d46425ea0ac3 meta/changes.pret
+SHA1 3745d256349c7a5c1ff2702d35ced0026ea6d92d lib/RDF/TrineX/Functions.pm
+SHA1 bb98d6fc1667aafac1d95662ee995d7c5d97d5ab meta/changes.pret
 SHA1 6ecca8c87fd85e680c966ae75b2a00eb8c8a70c0 meta/doap.pret
-SHA1 0216dcdad209c2a8f5ed07dc4b3631d5237654de meta/makefile.pret
+SHA1 1cbec07389f4b3f0680072f404148965fb9b1698 meta/makefile.pret
 SHA1 8127cf7daa22379259990668637b98ac7d00a626 t/01basic.t
 SHA1 d9abd9b565eb2dbadf213c3ddd936ca18b19b86b t/02parse_and_serialise.nt
-SHA1 27bca96f6b8997f45fc6356e1389fca4d6b032c0 t/02parse_and_serialise.t
+SHA1 006579b02fdcc2749b932234247b769947a3c74c t/02parse_and_serialise.t
 SHA1 e3d095e0c94db1fea131db909a3baec9d088f0a5 t/03nodes.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.10 (GNU/Linux)
 
-iEYEARECAAYFAk/8AtQACgkQzr+BKGoqfTkwLwCfUp8sIWLJ29zVcyxna9w1vP98
-AlsAn1UmmJfDwV1fDJgfHkyIat853DN2
-=Q1wS
+iEYEARECAAYFAk/9ajYACgkQzr+BKGoqfTnaGQCeJ5iIrsIvloPGy+lRsWEtWvIy
+ypkAoILO4+ofsfYKWsuW8J/jax5+TRKg
+=EsHW
 -----END PGP SIGNATURE-----

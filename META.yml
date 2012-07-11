@@ -25,6 +25,7 @@ no_index:
 requires:
   Carp: 0
   IO::Detect: 0.003
+  PerlX::Maybe: 0
   RDF::NS: 0
   RDF::Trine: 0.135
   Scalar::Util: 0
@@ -36,4 +37,4 @@ resources:
   homepage: https://metacpan.org/release/RDF-TrineX-Functions
   license: http://dev.perl.org/licenses/
   repository: https://bitbucket.org/tobyink/p5-rdf-trinex-functions
-version: 0.003
+version: 0.004

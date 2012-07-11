@@ -97,10 +97,11 @@ DESCRIPTION
         RDF::Trine::Parser object to use; the "type" option can be used
         instead to provide a media type hint. The "base" option provides the
         base URI. The "model" option can be used to tell this function to
-        parse into an existing model rather than returning a new one.
+        parse into an existing model rather than returning a new one. The
+        "graph" option may be used to provide a graph URI.
 
         "into" is an alias for "model"; "type", "using" and "as" are aliases
-        for "parser".
+        for "parser"; "context" is an alias for "graph".
 
         Examples:
 
